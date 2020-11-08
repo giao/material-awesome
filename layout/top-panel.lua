@@ -14,6 +14,7 @@ local icons = require('theme.icons')
 -- default was 48, too high. recduced down a noth
 local myheight = 36
 
+-- {{{ Clock/calendar stuff
 -- Clock / Calendar 24h format
 -- local textclock = wibox.widget.textclock('<span font="Roboto Mono bold 9">%d.%m.%Y %H:%M</span>')
 local textclock = wibox.widget.textclock('<span font="Roboto Mono bold 9">%H:%M</span>')
@@ -31,7 +32,9 @@ local month_calendar = awful.widget.calendar_popup.month({
 month_calendar:attach(textclock)
 
 local clock_widget = wibox.container.margin(textclock, dpi(13), dpi(13), dpi(8), dpi(8))
+-- }}}
 
+-- {{{ Plus button
 local add_button = mat_icon_button(mat_icon(icons.plus, dpi(24)))
 add_button:buttons(
   gears.table.join(
@@ -51,8 +54,9 @@ add_button:buttons(
     )
   )
 )
+-- }}}
 
--- Create an imagebox widget which will contains an icon indicating which layout we're using.
+-- {{{ Create an imagebox widget which will contains an icon indicating which layout we're using.
 -- We need one layoutbox per screen.
 local LayoutBox = function(s)
   local layoutBox = clickable_container(awful.widget.layoutbox(s))
@@ -90,7 +94,9 @@ local LayoutBox = function(s)
   )
   return layoutBox
 end
+-- }}}
 
+-- {{{ finally the panel
 local TopPanel = function(s, offset)
   local offsetx = 0
   if offset == true then
@@ -142,3 +148,4 @@ local TopPanel = function(s, offset)
 end
 
 return TopPanel
+-- }}}

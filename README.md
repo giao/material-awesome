@@ -1,4 +1,7 @@
 ## Material and Mouse driven theme for [AwesomeWM 4.3](https://awesomewm.org/)
+
+### Forked from https://github.com/ChrisTitusTech/material-awesome
+
 ### Original work by PapyElGringo, official development seem to have moved to [material-shell](https://github.com/PapyElGringo/material-shell)
 
 Note: This fork focuses on streamlining the config and adding some Quality of Life touches to the theme.

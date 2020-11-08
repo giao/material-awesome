@@ -8,10 +8,11 @@ local rofi_command = 'env /usr/bin/rofi -modi "window,run,ssh,drun" -dpi ' .. ge
 return {
   -- List of apps to start by default on some actions
   default = {
-    terminal = 'terminator',
+    --terminal = 'terminator',
+    terminal = 'alacritty',
     rofi = rofi_command,
     lock = 'i3lock-fancy',
-    quake = 'st',
+    quake = 'alacritty',
     screenshot = 'flameshot full -p ~/Pictures/screenshots',
     region_screenshot = 'flameshot gui -p ~/Pictures/screenshots',
     delayed_screenshot = 'flameshot full -p ~/Pictures/screenshots -d 5000',

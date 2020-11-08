@@ -96,6 +96,36 @@ local LayoutBox = function(s)
 end
 -- }}}
 
+-- {{{ keyboard layout widget
+local keyboard_layout = require("keyboard_layout")
+
+-- GUI mode
+local kbdcfg = keyboard_layout.kbdcfg({type="gui", remember_layout = true})
+
+kbdcfg.add_primary_layout("English", beautiful.en_layout, "us")
+kbdcfg.add_primary_layout("Русский", beautiful.ru_layout, "ru,us")
+
+kbdcfg.add_additional_layout("Deutsch",  beautiful.de_layout, "de")
+kbdcfg.add_additional_layout("Français", beautiful.fr_layout, "fr")
+
+-- TUI mode
+--local kbdcfg = keyboard_layout.kbdcfg({type="tui", remember_layout = true})
+--
+--kbdcfg.add_primary_layout("English", "US", "us")
+--kbdcfg.add_primary_layout("Русский", "RU", "ru,us")
+--
+--kbdcfg.add_additional_layout("Deutsch",  "DE", "de")
+--kbdcfg.add_additional_layout("Français", "FR", "fr")
+
+kbdcfg.bind()
+
+-- Mouse bindings
+kbdcfg.widget:buttons(
+ awful.util.table.join(awful.button({ }, 1, function () kbdcfg.switch_next() end),
+                       awful.button({ }, 3, function () kbdcfg.menu:toggle() end))
+)
+-- }}}
+
 -- {{{ finally the panel
 local TopPanel = function(s, offset)
   local offsetx = 0
@@ -139,6 +169,8 @@ local TopPanel = function(s, offset)
       layout = wibox.layout.fixed.horizontal,
       -- Clock
       clock_widget,
+      -- Keyboard layout
+      kbdcfg.widget,
       -- Layout box
       LayoutBox(s)
     }

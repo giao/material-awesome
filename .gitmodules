@@ -1,0 +1,3 @@
+[submodule "keyboard_layout"]
+	path = keyboard_layout
+	url = git@github.com:giao/keyboard_layout
